@@ -1,21 +1,28 @@
 import { createPost } from '../fetch-utils.js';
-import { '../auth/user.js' }; 
-
+import '../auth/user.js';
 
 const errorDisplay = document.getElementById('error-display');
+const postForm = document.getElementById('create-post-form');
 
+let error = null;
 
-const post = {title: formData.get('title'),
-description: formData.get('description')}
+postForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-const response = await createPost(post);
-error = response.error
+    const formData = FormData(postForm);
 
-if (error) {
-    displayError();
-} else {
-    location.assign('/');
-} 
+    const post = { title: formData.get('title'), description: formData.get('description') };
+
+    const response = await createPost(post);
+
+    error = response.error;
+
+    if (error) {
+        displayError();
+    } else {
+        // location.assign('/');
+    }
+});
 
 function displayError() {
     if (error) {
@@ -24,4 +31,3 @@ function displayError() {
         errorDisplay.textContent = '';
     }
 }
-
