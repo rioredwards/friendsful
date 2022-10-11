@@ -27,6 +27,7 @@
         <link rel="stylesheet" href="/styles/global.css" />
         <link rel="stylesheet" href="/styles/style.css" />
         <!-- add link for page specific css -->
+        <link rel="stylesheet" href="/styles/post-detail.css" />
     </head>
 
     <body>
@@ -41,14 +42,19 @@
         </header>
 
         <main>
-            <ul id="post-list">
-                <li class="post-container">
-                    <h2 class="post-title">Title</h2>
-                    <p class="post-description">Description</p>
-                </li>
-                <li class="post-container">
-                    <h2 class="post-title">Title</h2>
-                    <p class="post-description">Description</p>
+            <section class="post-container">
+                <h2 class="post-title">Title</h2>
+                <p class="post-description">Description</p>
+            </section>
+
+            <form id="add-comment-form" class="add-comment-form">
+                <input name="text" placeholder="add a comment..." />
+                <button>Send</button>
+            </form>
+
+            <ul id="comment-list" class="comment-list">
+                <li class="comment-container">
+                    <h3 class="comment">This is a comment!</h3>
                 </li>
             </ul>
         </main>
