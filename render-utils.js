@@ -16,3 +16,15 @@ export function renderPost(post) {
     li.append(a);
     return li;
 }
+
+export function renderComment(comment) {
+    const li = document.createElement('li');
+    li.classList.add('comment-container');
+
+    const p = document.createElement('p');
+    p.textContent = comment.text;
+    p.classList.add('comment-text');
+
+    li.append(p);
+    return li;
+}
