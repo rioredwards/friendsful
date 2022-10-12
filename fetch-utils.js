@@ -32,6 +32,16 @@ export async function signOutUser() {
 export async function createPost(post) {
     return await client.from('posts').insert(post).single();
 }
+
 export async function getPosts() {
     return await client.from('posts').select('*');
+}
+
+export async function getPost(id) {
+    return await client
+        .from('posts')
+        .select(`*, comments(*)`)
+        .eq('id', id)
+        .order('created_at', { foreignTable: 'comments', ascending: false })
+        .single();
 }
