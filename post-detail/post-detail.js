@@ -32,7 +32,6 @@ window.addEventListener('load', async () => {
     const response = await getPost(id);
     error = response.error;
     post = response.data;
-    console.log(post);
 
     if (error) {
         displayError();
@@ -88,7 +87,6 @@ commentForm.addEventListener('submit', async (e) => {
 
 /* Display Functions */
 function displayPost() {
-    console.log(postTitle);
     postTitle.textContent = post.title;
     postDescription.textContent = post.description;
 }

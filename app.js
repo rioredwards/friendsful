@@ -6,7 +6,6 @@ import { renderPost } from './render-utils.js';
 
 /* Get DOM Elements */
 const postList = document.getElementById('post-list');
-console.log(postList);
 
 const errorDisplay = document.getElementById('error-display');
 /* State */
