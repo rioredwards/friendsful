@@ -49,3 +49,11 @@ export async function getPost(id) {
 export async function createComment(comment) {
     return await client.from('comments').insert(comment).single();
 }
+
+export async function getComment(id) {
+    return await client.from('comments').select(`*`).eq('id', id).single();
+}
+
+export function onMessage(postId, handleComment) {
+    client.from(`comments:post_id=eq.${postId}`).on('INSERT', handleComment).subscribe();
+}

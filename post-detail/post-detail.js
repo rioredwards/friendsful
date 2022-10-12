@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
-import { createComment, getPost } from '../fetch-utils.js';
+import { createComment, getComment, getPost, onMessage } from '../fetch-utils.js';
 import { renderComment } from '../render-utils.js';
 
 /* Get DOM Elements */
@@ -32,6 +32,7 @@ window.addEventListener('load', async () => {
     const response = await getPost(id);
     error = response.error;
     post = response.data;
+    console.log(post);
 
     if (error) {
         displayError();
@@ -43,6 +44,19 @@ window.addEventListener('load', async () => {
         displayPost();
         displayComments();
     }
+
+    onMessage(post.id, async (payload) => {
+        const commentId = payload.new.id;
+        const commentResponse = await getComment(commentId);
+        error = commentResponse.error;
+        if (error) {
+            displayError();
+        } else {
+            const comment = commentResponse.data;
+            post.comments.unshift(comment);
+            displayComments();
+        }
+    });
 });
 
 commentForm.addEventListener('submit', async (e) => {
@@ -58,17 +72,17 @@ commentForm.addEventListener('submit', async (e) => {
         post_id: post.id,
         text: formData.get('text'),
     };
-    const response = await createComment(commentInsert);
 
+    const response = await createComment(commentInsert);
     error = response.error;
-    const comment = response.data;
+    // const comment = response.data;
 
     if (error) {
         displayError();
     } else {
-        post.comments.unshift(comment);
-        displayComments();
         commentForm.reset();
+        // post.comments.unshift(comment);
+        // displayComments();
     }
 });
 
