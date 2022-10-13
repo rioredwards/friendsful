@@ -8,7 +8,12 @@
 
         <!-- title and favicon -->
         <title>Supabase Web App</title>
-        <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="/assets/friendsful-icon-white.png"
+            class="tab-icon"
+        />
 
         <!-- js -->
         <script
@@ -34,10 +39,11 @@
 
     <body>
         <header class="page-header">
-            <img class="logo" src="/assets/html_css_js.png" alt="logo" />
-            <p class="title">friendsful</p>
+            <a href="/" class="home-link">
+                <img class="logo" src="/assets/friendsful-icon-black.png" alt="logo" />
+                <span class="title">friendsful</span>
+            </a>
             <nav>
-                <a href="/">Home</a>
                 <a id="add-post-link" href="./create-post/">Add Post</a>
                 <a id="sign-out-link" href="./auth">Sign Out</a>
             </nav>

@@ -101,5 +101,6 @@ function displayComments() {
 }
 
 function displayError() {
+    errorDisplay.classList.toggle('hidden');
     errorDisplay.textContent = error.message;
 }

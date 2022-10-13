@@ -5,8 +5,10 @@
     background-color: rgb(186, 161, 219);
     min-width: 20rem;
 
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 2.5rem;
+    /* justify-content: space-between; */
+    align-items: center;
     border-radius: 0.5rem;
     gap: 1rem;
 }
@@ -28,10 +30,18 @@
 }
 
 .comment-list {
-    width: 60%;
-    margin: 2rem auto;
-    padding: 1rem;
     background-color: rgb(186, 161, 219);
+    width: 60%;
+    margin: 0 auto;
+    padding: 0.5rem 0.2rem;
     min-width: 20rem;
+}
+
+.comment-container {
+    width: 96%;
+    background-color: rgb(207, 182, 241);
+    /* border: 1px solid rgba(138, 138, 138, 0.494); */
+    padding: 0.1rem 1rem;
     border-radius: 0.5rem;
+    margin: 0.5rem auto;
 }

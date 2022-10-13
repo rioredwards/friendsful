@@ -35,12 +35,14 @@
 
     <body>
         <header class="page-header">
-            <img class="logo" src="/assets/html_css_js.png" alt="logo" />
-            <p class="title">friendsful</p>
+            <a href="/" class="home-link">
+                <img class="logo" src="/assets/friendsful-icon-black.png" alt="logo" />
+                <span class="title">friendsful</span>
+            </a>
             <nav>
                 <a href="/">Home</a>
-                <a id="add-post-link" href="./create-post/">Add Post</a>
-                <a id="sign-out-link" href="./auth">Sign Out</a>
+                <a id="add-post-link" href="../create-post/">Add Post</a>
+                <a id="sign-out-link" href="../auth/">Sign Out</a>
             </nav>
         </header>
 
@@ -53,8 +55,8 @@
             <form id="add-comment-form" class="add-comment-form">
                 <input name="text" placeholder="add a comment..." id="add-comment-input" />
                 <button>Send</button>
-                <p id="error-display" class="error"></p>
             </form>
+            <p id="error-display" class="error hidden"></p>
 
             <ul id="comment-list" class="comment-list">
                 <li class="comment-container">
