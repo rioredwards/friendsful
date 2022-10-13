@@ -34,7 +34,7 @@ export async function createPost(post) {
 }
 
 export async function getPosts() {
-    return await client.from('posts').select('*');
+    return await client.from('posts').select('*').order('created_at', { ascending: false });
 }
 
 export async function getPost(id) {
@@ -56,4 +56,8 @@ export async function getComment(id) {
 
 export function onMessage(postId, handleComment) {
     client.from(`comments:post_id=eq.${postId}`).on('INSERT', handleComment).subscribe();
+}
+
+export function onPost(handlePost) {
+    client.from(`posts`).on('INSERT', handlePost).subscribe();
 }
