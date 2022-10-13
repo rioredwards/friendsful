@@ -46,6 +46,14 @@ export async function getPost(id) {
         .single();
 }
 
+export async function handleTyping(id, value) {
+    if (value === true) {
+        return await client.from('posts').update({ typing: true }).eq('id', id).single();
+    } else {
+        return await client.from('posts').update({ typing: false }).eq('id', id).single();
+    }
+}
+
 export async function createComment(comment) {
     return await client.from('comments').insert(comment).single();
 }
@@ -56,6 +64,10 @@ export async function getComment(id) {
 
 export function onMessage(postId, handleComment) {
     client.from(`comments:post_id=eq.${postId}`).on('INSERT', handleComment).subscribe();
+}
+
+export function onTyping(id, handleTyping) {
+    client.from(`posts:id=eq.${id}`).on('UPDATE', handleTyping).subscribe();
 }
 
 export function onPost(handlePost) {

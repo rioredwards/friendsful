@@ -1,7 +1,14 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
-import { createComment, getComment, getPost, onMessage } from '../fetch-utils.js';
+import {
+    createComment,
+    getComment,
+    getPost,
+    handleTyping,
+    onMessage,
+    onTyping,
+} from '../fetch-utils.js';
 import { renderComment } from '../render-utils.js';
 
 /* Get DOM Elements */
@@ -9,7 +16,9 @@ const postTitle = document.getElementById('post-title');
 const postDescription = document.getElementById('post-description');
 
 const commentForm = document.getElementById('add-comment-form');
+const commentInput = document.getElementById('add-comment-input');
 
+const typing = document.getElementById('typing');
 const errorDisplay = document.getElementById('error-display');
 const commentList = document.getElementById('comment-list');
 
@@ -42,6 +51,7 @@ window.addEventListener('load', async () => {
     } else {
         displayPost();
         displayComments();
+        displayTyping();
     }
 
     onMessage(post.id, async (payload) => {
@@ -53,6 +63,19 @@ window.addEventListener('load', async () => {
         } else {
             const comment = commentResponse.data;
             post.comments.unshift(comment);
+            displayComments();
+        }
+    });
+
+    onTyping(post.id, async (payload) => {
+        const postPayload = payload.new;
+        console.log(`Payload: ${postPayload.typing}`);
+        error = postPayload.error;
+        if (error) {
+            displayError();
+        } else {
+            // const comment = postPayload.data;
+            // post.comments.unshift(comment);
             displayComments();
         }
     });
@@ -85,10 +108,29 @@ commentForm.addEventListener('submit', async (e) => {
     }
 });
 
+/* Realtime Typing */
+commentInput.addEventListener('input', (e) => {
+    console.log(`Input Event: ${e}`);
+    handleTyping(post.id, true);
+});
+
+commentInput.addEventListener('blur', (e) => {
+    console.log(`Blur Event: ${e}`);
+    handleTyping(post.id, false);
+});
+
 /* Display Functions */
 function displayPost() {
     postTitle.textContent = post.title;
     postDescription.textContent = post.description;
+}
+
+function displayTyping() {
+    if (post.typing === true) {
+        typing.textContent = 'Someone is typing...';
+    } else {
+        typing.textContent = '';
+    }
 }
 
 function displayComments() {
