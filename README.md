@@ -1,26 +1,54 @@
-## The Golden Rule:
+# Realtime Group App
 
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
+![](Wireframe.png)
 
-If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
+Use [this template](https://github.com/alchemycodelab/web-template-supabase) for this deliverable.
 
-## Making a plan
+**Build something with supabase realtime in a group**
 
-1. **Make a drawing of your app. Simple "wireframes"**
-1. **Once you have a drawing, name the HTML elements you'll need to realize your vision**
-1. **For each HTML element ask: Why do I need this?**
-1. **Once we know _why_ we need each element, think about how to implement the "Why" as a "How"**
-1. **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
-1. **Think about how to validate each of your features according to a Definition of Done**
-1. **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
+## Groups
 
-Additional considerations:
+Work in groups of 2-3 for this assignment.
 
--   Ask: which of your HTML elements need to be hard coded, and which need to be dynamically generated?
--   Consider your data model.
-    -   What kinds of objects (i.e., Dogs, Friends, Todos, etc) will you need?
-    -   What are the key/value pairs?
-    -   What arrays might you need?
-    -   What needs to live in a persistence layer?
--   Is there some state we need to initialize?
--   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be reused?)
+-   This means one code base (supabase and githubrepo)
+    -   one person creates and then gives permissions to the other people
+-   You can divvy up features, and/or pair or mob
+-   When pairing or mobbing, you **must** switch "drivers" (person writing code) at regular intervals (25 or 30 minutes). Google "pomodoro" for online web timers
+-   The "navigator" (person not writing code) typically leads
+-   Consciously allow each other to:
+    -   Speak
+    -   Ideate
+    -   Lead
+
+## Supabase
+
+-   Create a new supabase project
+-   Turn on email authentication, but no email confirmation
+
+## Requirements
+
+Base requirements:
+
+-   Authenticated users (comes with template)
+-   Use realtime functionality (single chat room okay)
+-   Need a suggestion? Social media feed with Image upload capabilities
+
+Stretch requirements:
+
+-   User profiles
+-   Favorites or Reactions
+-   Multiple views of the data (all, my, favorites)
+
+## Rubric
+
+The following is required for your assignment to be graded:
+
+-   **Must be a group project (no solo)**
+-   PR open from `dev` to `main`
+-   PR Passes CI (lint + tests)
+-   PR preview on netlify
+
+| Commits with Working Features... | Points |
+| -------------------------------- | ------ |
+| WEB module "standard" app        | 10     |
+| Use of realtime                  | 10     |

@@ -1,0 +1,21 @@
+.post-container {
+    width: 60%;
+    margin: 2rem auto;
+    background-color: rgb(186, 161, 219);
+    min-width: 20rem;
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.post-title {
+    padding: 0 1rem;
+    padding: 0 0 0 1rem;
+}
+
+.post-description {
+    background-color: rgb(207, 182, 241);
+    padding: 1rem;
+    padding: 1rem;
+}
